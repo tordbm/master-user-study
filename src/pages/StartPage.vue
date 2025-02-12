@@ -12,7 +12,7 @@
       {{ store.selectedCategories.length }} of 2 selected
     </h4>
     <div
-      v-for="(category, rowIndex) in categories"
+      v-for="(category, rowIndex) in store.categoryToIconList"
       :key="rowIndex"
       class="row mt-3">
       <div class="col-sm-6 mb-3 mb-sm-0">
@@ -52,24 +52,6 @@ export default defineComponent({
     const store = useMainStore()
     return {
       store,
-    }
-  },
-  data() {
-    return {
-      categories: [
-        [
-          { name: 'Soccer', icon: 'fa-solid fa-futbol' },
-          { name: 'Basketball', icon: 'fa-solid fa-basketball' },
-        ],
-        [
-          { name: 'Golf', icon: 'fa-solid fa-golf-ball' },
-          { name: 'Fighting', icon: 'fa-solid fa-volleyball' },
-        ],
-        [
-          { name: 'Hockey', icon: 'fa-solid fa-hockey-puck' },
-          { name: 'American Football', icon: 'fa-solid fa-football' },
-        ],
-      ],
     }
   },
   created() {

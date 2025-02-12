@@ -65,7 +65,11 @@ export default {
   inject: ['router', 'route'],
   data() {
     return {
-      progressStyling: { startpage: '20%', 'select-articles': '40%' },
+      progressStyling: {
+        startpage: '20%',
+        'select-articles': '40%',
+        'recommend-articles': '60%',
+      },
     }
   },
   computed: {

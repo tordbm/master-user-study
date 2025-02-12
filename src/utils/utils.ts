@@ -1,3 +1,5 @@
+import type { Article } from './types'
+
 export function goToNextRoute(router, route) {
   const routes = router.getRoutes().map((r) => r.path)
   const currentIndex = routes.indexOf(route.path)
@@ -8,11 +10,11 @@ export function goToNextRoute(router, route) {
 }
 
 export function goToPrevRoute(router, route) {
-  const routes = router.getRoutes().map((r) => r.path) // Get all route paths
-  const currentIndex = routes.indexOf(route.path) // Find current route index
+  const routes = router.getRoutes().map((r) => r.path)
+  const currentIndex = routes.indexOf(route.path)
 
   if (currentIndex > 0) {
-    router.push(routes[currentIndex - 1]) // Navigate to previous route
+    router.push(routes[currentIndex - 1])
   }
 }
 
@@ -31,9 +33,8 @@ export function getSportFromIndex(sports: number[]): string[] {
 export function mapToGridLayout(articles: Article[]): Article[][] {
   const grid: Article[][] = []
 
-  for (let i = 0; i < articles.length; i += 2) {
-    grid.push(articles.slice(i, i + 2))
+  for (let i = 0; i < articles.length; i += 3) {
+    grid.push(articles.slice(i, i + 3))
   }
-
   return grid
 }

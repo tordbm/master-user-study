@@ -1,8 +1,6 @@
 <template>
   <div class="d-flex flex-column min-vh-100">
-    <h4 class="my-3">
-      Please like some articles you would be interested in reading
-    </h4>
+    <h4 class="my-3">Recommended articles based on your selection</h4>
     <ContentLoader :loading="store.loading">
       <div
         v-for="(article, rowIndex) in store.articles"
@@ -35,7 +33,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import ArticleCard from '../components/ArticleCard.vue'
-import { getSportFromIndex } from '../utils/utils'
 import ContentLoader from '../components/ContentLoader.vue'
 import { useMainStore } from '../store/mainStore'
 
@@ -49,20 +46,6 @@ export default defineComponent({
     return {
       store,
     }
-  },
-  data() {
-    return {
-      categories: [] as number[],
-    }
-  },
-  async created() {
-    const categories = localStorage.getItem('selectedCategories')
-    if (categories) {
-      this.categories = JSON.parse(categories).map(Number)
-    }
-
-    const sports = getSportFromIndex(this.categories)
-    await this.store.fetchArticles(sports)
   },
 })
 </script>
