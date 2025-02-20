@@ -18,12 +18,14 @@
         <div class="col-sm-4">
           <ArticleCard
             :news_id="article[1].news_id"
+            :icon="store.categoryToIcon(article[1].general_category)"
             :header="article[1].title"
             :abstract="article[1].abstract" />
         </div>
         <div class="col-sm-4">
           <ArticleCard
             :news_id="article[2].news_id"
+            :icon="store.categoryToIcon(article[2].general_category)"
             :header="article[2].title"
             :abstract="article[2].abstract" />
         </div>

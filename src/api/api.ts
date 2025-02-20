@@ -1,7 +1,7 @@
 import axios from 'axios'
-import type { Article } from '../utils/types'
+import type { Article, RecommendedArticle } from '../utils/types'
 
-axios.defaults.baseURL = ' http://127.0.0.1:8000'
+axios.defaults.baseURL = 'https://profound-viki-monclair-f9ab654d.koyeb.app'
 
 export async function fetchSportsArticles(
   sports: string[]
@@ -11,6 +11,18 @@ export async function fetchSportsArticles(
     return response.data
   } catch (error) {
     console.error('Error fetching articles: ', error)
+    throw error
+  }
+}
+
+export async function fetchRecommendedArticles(
+  likedArticles: string[]
+): Promise<RecommendedArticle[]> {
+  try {
+    const response = await axios.post('/recommend', { news_ids: likedArticles })
+    return response.data
+  } catch (error) {
+    console.error('Error fetching recommendations: ', error)
     throw error
   }
 }

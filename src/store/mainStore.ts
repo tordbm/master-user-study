@@ -1,15 +1,18 @@
 import { defineStore } from 'pinia'
-import { fetchSportsArticles } from '../api/api'
-import { mapToGridLayout } from '../utils/utils'
-import type { Article } from '../utils/types'
+import { fetchRecommendedArticles, fetchSportsArticles } from '../api/api'
+import { mapToCorrectColumnLayout, mapToGridLayout } from '../utils/utils'
+import type { Article, RecommendedArticle } from '../utils/types'
 
 export const useMainStore = defineStore('store', {
   state: () => {
     return {
       loading: false,
       articles: [] as Article[],
-      selectedArticles: [] as Article[],
+      likedArticles: [] as Article[],
       selectedCategories: [] as number[],
+      recommendations: [] as RecommendedArticle[],
+      recommender1: null as string | null,
+      recommender2: null as string | null,
       categoryToIconList: [
         [
           { name: 'Soccer', icon: 'fa-solid fa-futbol' },
@@ -21,7 +24,7 @@ export const useMainStore = defineStore('store', {
         ],
         [
           { name: 'Hockey', icon: 'fa-solid fa-hockey-puck' },
-          { name: 'American Football', icon: 'fa-solid fa-football' },
+          { name: 'Football', icon: 'fa-solid fa-football' },
         ],
       ],
     }
@@ -31,6 +34,16 @@ export const useMainStore = defineStore('store', {
       this.loading = true
       const response = await fetchSportsArticles(sports)
       this.articles = mapToGridLayout(response)
+      this.loading = false
+    },
+    async fetchRecommendations(likedArticles: string[]) {
+      this.loading = true
+      const response = await fetchRecommendedArticles(likedArticles)
+      const [recommenders, grid] = mapToCorrectColumnLayout(response)
+      console.log(recommenders)
+      this.recommender1 = recommenders[0]
+      this.recommender2 = recommenders[1]
+      this.recommendations = grid
       this.loading = false
     },
     addCategory(index: number) {
@@ -47,10 +60,15 @@ export const useMainStore = defineStore('store', {
       )
     },
     categoryToIcon(category: string) {
-      const test = this.categoryToIconList.map((x) =>
-        x.find((x) => x.name.toLowerCase() === category)
-      )
-      console.log(test)
+      if (category === 'baseball') return 'fa-solid fa-baseball-bat-ball'
+      for (const group of this.categoryToIconList) {
+        const found = group.find(
+          (item) => item.name.toLowerCase() === category.toLowerCase()
+        )
+        if (found) {
+          return found.icon
+        }
+      }
       return ''
     },
   },

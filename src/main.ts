@@ -10,6 +10,7 @@ import {
   faFootball,
   faHockeyPuck,
   faThumbsUp,
+  faBaseballBatBall,
 } from '@fortawesome/free-solid-svg-icons'
 import { faThumbsUp as faThumbsUpReg } from '@fortawesome/free-regular-svg-icons'
 import { createApp } from 'vue'
@@ -25,7 +26,8 @@ library.add(
   faFootball,
   faHockeyPuck,
   faThumbsUp,
-  faThumbsUpReg
+  faThumbsUpReg,
+  faBaseballBatBall
 )
 const pinia = createPinia()
 const app = createApp(App)
