@@ -60,16 +60,14 @@ export const useMainStore = defineStore('store', {
       )
     },
     categoryToIcon(category: string) {
-      if (category === 'baseball') return 'fa-solid fa-baseball-bat-ball'
-      for (const group of this.categoryToIconList) {
-        const found = group.find(
-          (item) => item.name.toLowerCase() === category.toLowerCase()
-        )
-        if (found) {
-          return found.icon
-        }
-      }
-      return ''
+      const categoryToIconMap = Object.fromEntries([
+        ['baseball', 'fa-solid fa-baseball-bat-ball'],
+        ...this.categoryToIconList
+          .flat()
+          .map(({ name, icon }) => [name.toLowerCase(), icon]),
+      ])
+
+      return categoryToIconMap[category] || 'fa-solid fa-question'
     },
   },
 })

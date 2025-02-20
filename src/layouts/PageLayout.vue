@@ -36,7 +36,7 @@
             <button
               class="btn btn-primary"
               @click="next()"
-              :disabled="store.selectedCategories.length !== 2">
+              :disabled="isNextDisabled">
               Next
             </button>
           </div>
@@ -75,6 +75,14 @@ export default {
   computed: {
     currentRoute() {
       return this.$route.name
+    },
+    isNextDisabled() {
+      return (
+        (this.currentRoute === 'startpage' &&
+          this.store.selectedCategories.length !== 2) ||
+        (this.currentRoute === 'select-articles' &&
+          this.store.likedArticles.length < 1)
+      )
     },
   },
   methods: {
@@ -122,6 +130,10 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+
+.container {
+  padding-bottom: 80px;
 }
 
 @media (min-width: 1024px) {
