@@ -6,8 +6,10 @@
         v-for="(article, rowIndex) in store.recommendations"
         :key="rowIndex"
         class="row mt-3">
-        <div class="col-sm-4 mb-3 mb-sm-0">
-          <h2 v-if="rowIndex === 0">{{ store.recommender1 }}</h2>
+        <div class="col-sm-4">
+          <h2 v-if="rowIndex === 0" class="text-start">
+            {{ store.recommender1 }}
+          </h2>
           <ArticleCard
             :news_id="article[0].news_id"
             :icon="store.categoryToIcon(article[0].general_category)"
@@ -15,7 +17,9 @@
             :abstract="article[0].abstract" />
         </div>
         <div class="col-sm-4">
-          <h2 v-if="rowIndex === 0">{{ store.recommender2 }}</h2>
+          <h2 v-if="rowIndex === 0" class="text-start">
+            {{ store.recommender2 }}
+          </h2>
           <ArticleCard
             :news_id="article[1].news_id"
             :icon="store.categoryToIcon(article[1].general_category)"

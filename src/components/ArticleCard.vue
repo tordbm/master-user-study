@@ -1,7 +1,7 @@
 <template>
   <div
     class="card border-primary d-flex flex-column"
-    style="width: 20rem; height: 14rem; display: flex">
+    style="width: 22rem; height: 14rem; display: flex">
     <div class="card-body d-flex flex-column">
       <h6 class="card-title text-start no-wrap-truncate-text">
         {{ header }}

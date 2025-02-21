@@ -31,6 +31,7 @@ export const useMainStore = defineStore('store', {
   },
   actions: {
     async fetchArticles(sports: string[]) {
+      if (this.articles.length > 0) return
       this.loading = true
       const response = await fetchSportsArticles(sports)
       this.articles = mapToGridLayout(response)

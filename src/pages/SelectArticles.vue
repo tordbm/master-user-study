@@ -4,30 +4,32 @@
       Please like some articles you would be interested in reading
     </h4>
     <ContentLoader :loading="store.loading">
-      <div
-        v-for="(article, rowIndex) in store.articles"
-        :key="rowIndex"
-        class="row mt-3">
-        <div class="col-sm-4 mb-3 mb-sm-0">
-          <ArticleCard
-            :news_id="article[0].news_id"
-            :icon="store.categoryToIcon(article[0].general_category)"
-            :header="article[0].title"
-            :abstract="article[0].abstract" />
-        </div>
-        <div class="col-sm-4">
-          <ArticleCard
-            :news_id="article[1].news_id"
-            :icon="store.categoryToIcon(article[1].general_category)"
-            :header="article[1].title"
-            :abstract="article[1].abstract" />
-        </div>
-        <div class="col-sm-4">
-          <ArticleCard
-            :news_id="article[2].news_id"
-            :icon="store.categoryToIcon(article[2].general_category)"
-            :header="article[2].title"
-            :abstract="article[2].abstract" />
+      <div class="container">
+        <div
+          v-for="(article, rowIndex) in store.articles"
+          :key="rowIndex"
+          class="row d-flex justify-content-center mt-3">
+          <div class="col-sm-4 mx-auto d-flex justify-content-center">
+            <ArticleCard
+              :news_id="article[0].news_id"
+              :icon="store.categoryToIcon(article[0].general_category)"
+              :header="article[0].title"
+              :abstract="article[0].abstract" />
+          </div>
+          <div class="col-sm-4 mx-auto d-flex justify-content-center">
+            <ArticleCard
+              :news_id="article[1].news_id"
+              :icon="store.categoryToIcon(article[1].general_category)"
+              :header="article[1].title"
+              :abstract="article[1].abstract" />
+          </div>
+          <div class="col-sm-4 mx-auto d-flex justify-content-center">
+            <ArticleCard
+              :news_id="article[2].news_id"
+              :icon="store.categoryToIcon(article[2].general_category)"
+              :header="article[2].title"
+              :abstract="article[2].abstract" />
+          </div>
         </div>
       </div>
     </ContentLoader>

@@ -1,21 +1,12 @@
 <template>
   <main>
-    <header>
-      <div class="wrapper">
-        <nav>
-          <RouterLink to="/"></RouterLink>
-        </nav>
-      </div>
-    </header>
-
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
           <div
             class="progress mt-3"
             role="progressbar"
-            aria-label="Basic example"
-            aria-valuenow="20"
+            aria-label="Progress"
             aria-valuemin="0"
             aria-valuemax="100">
             <div
@@ -66,9 +57,9 @@ export default {
   data() {
     return {
       progressStyling: {
-        startpage: '20%',
-        'select-articles': '40%',
-        'recommend-articles': '60%',
+        startpage: '0%',
+        'select-articles': '33%',
+        'recommend-articles': '66%',
       },
     }
   },
