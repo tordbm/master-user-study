@@ -12,7 +12,10 @@
       </p>
     </div>
     <div class="d-flex justify-content-between p-2 mt-auto">
-      <button class="btn" @click="toggleActive(news_id)">
+      <button
+        v-if="currentRoute !== 'recommend-articles'"
+        class="btn"
+        @click="toggleActive(news_id)">
         <font-awesome-icon
           v-if="!store.likedArticles.includes(news_id)"
           icon="fa-regular fa-thumbs-up"
@@ -45,6 +48,11 @@ export default defineComponent({
     header: { type: String, required: true },
     icon: { type: null, String },
     abstract: { type: String, required: true },
+  },
+  computed: {
+    currentRoute() {
+      return this.$route.name
+    },
   },
   methods: {
     toggleActive(id: string) {

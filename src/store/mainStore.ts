@@ -41,7 +41,6 @@ export const useMainStore = defineStore('store', {
       this.loading = true
       const response = await fetchRecommendedArticles(likedArticles)
       const [recommenders, grid] = mapToCorrectColumnLayout(response)
-      console.log(recommenders)
       this.recommender1 = recommenders[0]
       this.recommender2 = recommenders[1]
       this.recommendations = grid
