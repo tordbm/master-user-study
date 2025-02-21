@@ -42,6 +42,11 @@ import { RouterLink, RouterView } from 'vue-router'
 import { goToNextRoute, goToPrevRoute } from '../utils/utils'
 import { useMainStore } from '../store/mainStore'
 
+const preventPageUnload = (event: BeforeUnloadEvent) => {
+  sessionStorage.setItem('reloaded', 'true')
+  event.preventDefault()
+}
+
 export default {
   components: {
     RouterLink,
@@ -76,6 +81,13 @@ export default {
       )
     },
   },
+  mounted() {
+    if (sessionStorage.getItem('reloaded')) {
+      sessionStorage.removeItem('reloaded')
+      this.router.push('/')
+    }
+    window.addEventListener('beforeunload', preventPageUnload)
+  },
   methods: {
     prev() {
       goToPrevRoute(this.router, this.route)
@@ -83,6 +95,9 @@ export default {
     next() {
       goToNextRoute(this.router, this.route)
     },
+  },
+  beforeUnmount() {
+    window.removeEventListener('beforeunload', preventPageUnload)
   },
 }
 </script>
