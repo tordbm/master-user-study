@@ -26,7 +26,44 @@
           size="xl"
           style="color: #e11428" />
       </button>
-      <button class="btn btn-link">Read More</button>
+      <button
+        class="btn btn-link"
+        data-bs-toggle="modal"
+        :data-bs-target="'#fullArticle' + news_id">
+        Read More
+      </button>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    :id="'fullArticle' + news_id"
+    tabindex="-1"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title text-start fs-5">
+            {{ header }}
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-start">
+          {{ abstract }}
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
