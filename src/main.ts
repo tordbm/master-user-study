@@ -12,6 +12,9 @@ import {
   faThumbsUp,
   faBaseballBatBall,
   faQuestion,
+  faRectangleList,
+  faFlagCheckered,
+  faTableTennisPaddleBall,
 } from '@fortawesome/free-solid-svg-icons'
 import { faThumbsUp as faThumbsUpReg } from '@fortawesome/free-regular-svg-icons'
 import { createApp } from 'vue'
@@ -29,7 +32,10 @@ library.add(
   faThumbsUp,
   faThumbsUpReg,
   faBaseballBatBall,
-  faQuestion
+  faQuestion,
+  faRectangleList,
+  faFlagCheckered,
+  faTableTennisPaddleBall
 )
 const pinia = createPinia()
 const app = createApp(App)

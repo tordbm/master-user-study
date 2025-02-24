@@ -27,6 +27,9 @@ export function getSportFromIndex(sports: number[]): string[] {
     '4': 'hockey',
     '5': 'football',
     '6': 'baseball',
+    '7': 'racing',
+    '8': 'tennis',
+    '9': 'misc',
   }
   return sports.map((x) => sportsMap[x])
 }

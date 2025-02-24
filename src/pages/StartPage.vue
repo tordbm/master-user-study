@@ -7,33 +7,25 @@
     <h4
       class="my-3"
       :style="
-        store.selectedCategories.length > 2 ? 'color: red' : 'color: black'
+        store.selectedCategories.length > 3 ? 'color: red' : 'color: black'
       ">
-      {{ store.selectedCategories.length }} of 2 selected
+      {{ store.selectedCategories.length }} of 3 selected
     </h4>
-    <div
-      v-for="(category, rowIndex) in store.categoryToIconList"
-      :key="rowIndex"
-      class="row mt-3">
-      <div class="col-sm-6 mb-3 mb-sm-0">
-        <button
-          class="btn category-button"
-          :class="{
-            active: store.selectedCategories.includes(rowIndex * 2),
-          }"
-          @click="toggleActive(rowIndex * 2)">
-          <CategoryCard :header="category[0].name" :icon="category[0].icon" />
-        </button>
-      </div>
-      <div class="col-sm-6">
-        <button
-          class="btn category-button"
-          :class="{
-            active: store.selectedCategories.includes(rowIndex * 2 + 1),
-          }"
-          @click="toggleActive(rowIndex * 2 + 1)">
-          <CategoryCard :header="category[1].name" :icon="category[1].icon" />
-        </button>
+    <div class="container">
+      <div
+        v-for="(category, rowIndex) in store.categoryToIconList"
+        :key="rowIndex"
+        class="row mt-3">
+        <div v-for="(item, index) in category" :key="index" class="col-sm-4">
+          <button
+            class="btn category-button"
+            :class="{
+              active: store.selectedCategories.includes(rowIndex * 3 + index),
+            }"
+            @click="toggleActive(rowIndex * 3 + index)">
+            <CategoryCard :header="item.name" :icon="item.icon" />
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -62,6 +54,7 @@ export default defineComponent({
   },
   methods: {
     toggleActive(index: number) {
+      console.log(index)
       this.store.addCategory(index)
     },
   },

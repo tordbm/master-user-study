@@ -17,14 +17,17 @@ export const useMainStore = defineStore('store', {
         [
           { name: 'Soccer', icon: 'fa-solid fa-futbol' },
           { name: 'Basketball', icon: 'fa-solid fa-basketball' },
-        ],
-        [
           { name: 'Golf', icon: 'fa-solid fa-golf-ball' },
-          { name: 'Fighting', icon: 'fa-solid fa-hand-fist' },
         ],
         [
+          { name: 'Fighting', icon: 'fa-solid fa-hand-fist' },
           { name: 'Hockey', icon: 'fa-solid fa-hockey-puck' },
           { name: 'Football', icon: 'fa-solid fa-football' },
+        ],
+        [
+          { name: 'Baseball', icon: 'fa-solid fa-baseball-bat-ball' },
+          { name: 'Racing', icon: 'fa-solid fa-flag-checkered' },
+          { name: 'Tennis', icon: 'fa-solid fa-table-tennis-paddle-ball' },
         ],
       ],
     }
@@ -61,7 +64,7 @@ export const useMainStore = defineStore('store', {
     },
     categoryToIcon(category: string) {
       const categoryToIconMap = Object.fromEntries([
-        ['baseball', 'fa-solid fa-baseball-bat-ball'],
+        ['misc', 'fa-solid fa-rectangle-list'],
         ...this.categoryToIconList
           .flat()
           .map(({ name, icon }) => [name.toLowerCase(), icon]),

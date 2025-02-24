@@ -5,7 +5,7 @@ axios.defaults.baseURL = 'https://profound-viki-monclair-f9ab654d.koyeb.app'
 
 async function retry<T>(
   fn: () => Promise<T>,
-  retries = 3,
+  retries = 4,
   delay = 1000
 ): Promise<T> {
   let attempt = 0

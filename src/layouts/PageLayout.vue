@@ -75,7 +75,7 @@ export default {
     isNextDisabled() {
       return (
         (this.currentRoute === 'startpage' &&
-          this.store.selectedCategories.length !== 2) ||
+          this.store.selectedCategories.length !== 3) ||
         (this.currentRoute === 'select-articles' &&
           this.store.likedArticles.length < 1)
       )
