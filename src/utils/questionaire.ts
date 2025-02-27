@@ -66,4 +66,9 @@ export const questions = [
       'Which recommender would you trust more to give you sports recommendations?',
     options: defaultOptions,
   },
+  {
+    qaId: 'qa',
+    question: 'Which list has more articles you did not expect?',
+    options: defaultOptions,
+  },
 ]
