@@ -35,11 +35,7 @@
     </div>
   </div>
   <!-- Modal -->
-  <div
-    class="modal fade"
-    :id="'fullArticle' + news_id"
-    tabindex="-1"
-    aria-hidden="true">
+  <div class="modal fade" :id="'fullArticle' + news_id" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">

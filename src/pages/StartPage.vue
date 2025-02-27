@@ -54,7 +54,6 @@ export default defineComponent({
   },
   methods: {
     toggleActive(index: number) {
-      console.log(index)
       this.store.addCategory(index)
     },
   },
