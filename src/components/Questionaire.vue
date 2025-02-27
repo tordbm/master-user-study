@@ -1,9 +1,14 @@
 <template>
-  <div v-for="(item, index) in questions">
-    <Question
-      :index="index"
-      :question="item.question"
-      :options="item.options" />
+  <div class="questionaire">
+    <div v-for="(item, index) in questions">
+      <Question
+        class="mb-3"
+        :key="index"
+        :qaId="item.qaId + index"
+        :index="index"
+        :question="item.question"
+        :options="item.options" />
+    </div>
   </div>
 </template>
 
@@ -21,3 +26,8 @@ export default defineComponent({
   },
 })
 </script>
+<style lang="scss">
+.questionaire {
+  margin-top: 4rem;
+}
+</style>

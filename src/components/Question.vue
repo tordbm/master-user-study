@@ -1,23 +1,27 @@
 <template>
   <div :id="'question' + index" class="card">
     <div class="card-body">
-      <div class="card-text">
-        {{ question }}
+      <div class="card-title text-start">
+        {{ index + 1 + '. ' + question }}
       </div>
-      <div
-        v-for="(option, index) in options"
-        :key="index"
-        class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="inlineRadioOptions"
-          :id="'inlineRadio' + index"
-          :value="option.value"
-          v-model="selectedOption" />
-        <label class="form-check-label" :for="'inlineRadio' + index">{{
-          option.text
-        }}</label>
+      <div class="card-text">
+        <div
+          v-for="(option, optIndex) in options"
+          :key="optIndex"
+          class="form-check form-check-inline mt-1">
+          <input
+            class="form-check-input"
+            type="radio"
+            :name="'question' + index"
+            :id="'inlineRadio' + index + '-' + optIndex"
+            :value="option.value"
+            v-model="selectedOption" />
+          <label
+            class="form-check-label"
+            :for="'inlineRadio' + index + '-' + optIndex">
+            {{ option.text }}
+          </label>
+        </div>
       </div>
     </div>
   </div>
@@ -28,23 +32,27 @@ import { defineComponent } from 'vue'
 import { useMainStore } from '../store/mainStore'
 
 export default defineComponent({
-  setup() {
-    const store = useMainStore()
-    return {
-      store,
-    }
-  },
   props: {
+    qaId: { type: String, required: true },
     index: { type: Number, required: true },
     question: { type: String, required: true },
-    options: { type: Array<Object>, required: true },
+    options: {
+      type: Array as () => { value: string; text: string }[],
+      required: true,
+    },
   },
-  data() {
-    return { selectedOption: null }
+  setup() {
+    const store = useMainStore()
+    return { store }
   },
-  watch: {
-    selectedOption(newValue) {
-      console.log(newValue)
+  computed: {
+    selectedOption: {
+      get() {
+        return this.store.selectedAnswers[this.index] || null
+      },
+      set(value: string) {
+        this.store.setAnswer(this.qaId, value)
+      },
     },
   },
 })
