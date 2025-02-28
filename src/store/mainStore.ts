@@ -48,7 +48,6 @@ export const useMainStore = defineStore('store', {
       const [recommenders, grid] = mapToCorrectColumnLayout(response)
       this.recommender1 = recommenders[0]
       this.recommender2 = recommenders[1]
-      console.log('Rec1: ' + this.recommender1 + ' Rec2: ' + this.recommender2)
       this.recommendations = grid
       this.loading = false
     },
