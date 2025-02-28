@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { Article, RecommendedArticle } from '../utils/types'
+import type { Article, Question, RecommendedArticle } from '../utils/types'
 
 axios.defaults.baseURL = 'https://profound-viki-monclair-f9ab654d.koyeb.app'
 
@@ -36,6 +36,14 @@ export async function fetchRecommendedArticles(
   return retry(() =>
     axios
       .post('/recommend', { news_ids: likedArticles })
+      .then((res) => res.data)
+  )
+}
+
+export async function submitUserStudy(questionaire: Question[]): Promise<any> {
+  return retry(() =>
+    axios
+      .post('/insert_study_response', { questionaire: questionaire })
       .then((res) => res.data)
   )
 }

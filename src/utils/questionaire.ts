@@ -6,6 +6,15 @@ enum Options {
   NO = 'NO',
 }
 
+export enum AnswerOptions {
+  TF_IDF = 'tf_idf',
+  OPEN_AI = 'open_ai',
+  S_BERT = 's_bert',
+  UNSURE = 'unsure',
+  YES = 'yes',
+  NO = 'NO',
+}
+
 const defaultOptions = [
   { value: Options.LIST1, text: 'List 1' },
   { value: Options.UNSURE, text: 'Unsure' },

@@ -2,7 +2,9 @@
   <div :id="'question' + index" class="card">
     <div class="card-body">
       <div class="card-title text-start">
-        {{ index + 1 + '. ' + question }}
+        <b>
+          {{ index + 1 + '. ' + question }}
+        </b>
       </div>
       <div class="card-text">
         <div

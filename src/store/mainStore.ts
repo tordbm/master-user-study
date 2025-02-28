@@ -7,13 +7,14 @@ export const useMainStore = defineStore('store', {
   state: () => {
     return {
       loading: false,
+      recieptId: null as string | null,
       articles: [] as Article[],
       likedArticles: [] as Article[],
       selectedCategories: [] as number[],
       recommendations: [] as RecommendedArticle[],
       recommender1: null as string | null,
       recommender2: null as string | null,
-      selectedAnswers: {} as Record<number, string | null>,
+      selectedAnswers: {} as Record<string, string>,
       categoryToIconList: [
         [
           { name: 'Soccer', icon: 'fa-solid fa-futbol' },
@@ -75,7 +76,14 @@ export const useMainStore = defineStore('store', {
       return categoryToIconMap[category] || 'fa-solid fa-question'
     },
     setAnswer(questionId: string, answer: string) {
-      this.selectedAnswers[questionId] = answer
+      const answerToRec = {
+        LIST1: this.recommender1,
+        LIST2: this.recommender2,
+        UNSURE: 'unsure',
+        YES: 'yes',
+        NO: 'no',
+      }
+      this.selectedAnswers[questionId] = answerToRec[answer]
     },
   },
 })

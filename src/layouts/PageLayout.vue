@@ -21,10 +21,20 @@
             <button
               class="btn btn-primary"
               @click="prev()"
-              :disabled="currentRoute === 'startpage'">
+              :disabled="
+                currentRoute === 'startpage' || currentRoute === 'reciept'
+              ">
               Previous
             </button>
             <button
+              v-if="currentRoute === 'recommend-articles'"
+              class="btn btn-success"
+              @click="submit()"
+              :disabled="isNextDisabled">
+              Submit
+            </button>
+            <button
+              v-else
               class="btn btn-primary"
               @click="next()"
               :disabled="isNextDisabled">
@@ -41,6 +51,8 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { goToNextRoute, goToPrevRoute } from '../utils/utils'
 import { useMainStore } from '../store/mainStore'
+import { questions, AnswerOptions } from '../utils/questionaire'
+import { submitUserStudy } from '../api/api'
 
 const preventPageUnload = (event: BeforeUnloadEvent) => {
   sessionStorage.setItem('reloaded', 'true')
@@ -63,8 +75,9 @@ export default {
     return {
       progressStyling: {
         startpage: '0%',
-        'select-articles': '33%',
-        'recommend-articles': '66%',
+        'select-articles': '33.3%',
+        'recommend-articles': '66.6%',
+        reciept: '100%',
       },
     }
   },
@@ -77,7 +90,11 @@ export default {
         (this.currentRoute === 'startpage' &&
           this.store.selectedCategories.length !== 3) ||
         (this.currentRoute === 'select-articles' &&
-          this.store.likedArticles.length < 1)
+          this.store.likedArticles.length < 1) ||
+        (this.currentRoute === 'recommend-articles' &&
+          Object.keys(this.store.selectedAnswers).length !==
+            questions.length) ||
+        this.currentRoute === 'reciept'
       )
     },
   },
@@ -89,6 +106,19 @@ export default {
     window.addEventListener('beforeunload', preventPageUnload)
   },
   methods: {
+    async submit() {
+      this.next()
+      this.store.loading = true
+      const questionaire = Object.entries(this.store.selectedAnswers).map(
+        ([question_id, response]) => ({
+          question_id,
+          response: response as AnswerOptions,
+        })
+      )
+      const response = await submitUserStudy(questionaire)
+      this.store.recieptId = response.id
+      this.store.loading = false
+    },
     prev() {
       goToPrevRoute(this.router, this.route)
     },
