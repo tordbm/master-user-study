@@ -123,6 +123,7 @@ export default {
       goToPrevRoute(this.router, this.route)
     },
     next() {
+      window.scrollTo(0, 0)
       goToNextRoute(this.router, this.route)
     },
   },
