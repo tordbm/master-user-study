@@ -54,9 +54,25 @@ import { useMainStore } from '../store/mainStore'
 import { questions, AnswerOptions } from '../utils/questionaire'
 import { submitUserStudy } from '../api/api'
 
+const preventOnRoutes = ['select-art', 'recommend-art']
+
 const preventPageUnload = (event: BeforeUnloadEvent) => {
-  sessionStorage.setItem('reloaded', 'true')
-  event.preventDefault()
+  if (
+    preventOnRoutes.includes(window.location.pathname.split('/').pop() || '')
+  ) {
+    sessionStorage.setItem('reloaded', 'true')
+    event.preventDefault()
+    event.returnValue = ''
+  }
+}
+
+const handleVisibilityChange = () => {
+  if (
+    document.visibilityState === 'hidden' &&
+    preventOnRoutes.includes(window.location.pathname.split('/').pop() || '')
+  ) {
+    sessionStorage.setItem('reloaded', 'true')
+  }
 }
 
 export default {
@@ -104,6 +120,7 @@ export default {
       this.router.push('/')
     }
     window.addEventListener('beforeunload', preventPageUnload)
+    document.addEventListener('visibilitychange', handleVisibilityChange)
   },
   methods: {
     async submit() {
@@ -129,6 +146,7 @@ export default {
   },
   beforeUnmount() {
     window.removeEventListener('beforeunload', preventPageUnload)
+    document.removeEventListener('visibilitychange', handleVisibilityChange)
   },
 }
 </script>
