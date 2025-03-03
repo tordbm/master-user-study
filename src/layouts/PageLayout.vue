@@ -151,3 +151,8 @@ export default {
   },
 }
 </script>
+<style scoped>
+.container {
+  padding-bottom: 80px;
+}
+</style>
