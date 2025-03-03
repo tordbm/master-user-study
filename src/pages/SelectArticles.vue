@@ -3,7 +3,7 @@
     <h4 class="my-3">
       Please like some articles you would be interested in reading
     </h4>
-
+    <ContentLoader :loading="store.articles.length === 0" />
     <div v-if="store.articles.length > 0" class="container">
       <div
         v-for="(articleRow, rowIndex) in store.articles"

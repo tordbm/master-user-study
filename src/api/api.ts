@@ -1,7 +1,7 @@
 import axios from 'axios'
 import type { Article, Question, RecommendedArticle } from '../utils/types'
 
-axios.defaults.baseURL = 'http://localhost:8000'
+axios.defaults.baseURL = 'https://profound-viki-monclair-f9ab654d.koyeb.app'
 
 async function retry<T>(
   fn: () => Promise<T>,
