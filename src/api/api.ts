@@ -1,7 +1,7 @@
 import axios from 'axios'
 import type { Article, Question, RecommendedArticle } from '../utils/types'
 
-axios.defaults.baseURL = 'https://profound-viki-monclair-f9ab654d.koyeb.app'
+axios.defaults.baseURL = 'http://localhost:8000'
 
 async function retry<T>(
   fn: () => Promise<T>,
@@ -23,10 +23,18 @@ async function retry<T>(
 }
 
 export async function fetchSportsArticles(
-  sports: string[]
+  sports: string[],
+  shown_articles: string[]
 ): Promise<Article[]> {
   return retry(() =>
-    axios.post('/articles', { sports }).then((res) => res.data)
+    axios
+      .post('/articles', {
+        categories: {
+          sports: sports,
+        },
+        shown_articles: shown_articles,
+      })
+      .then((res) => res.data)
   )
 }
 

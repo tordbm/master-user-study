@@ -22,7 +22,7 @@ export const useMainStore = defineStore('store', {
           { name: 'Golf', icon: 'fa-solid fa-golf-ball' },
         ],
         [
-          { name: 'Fighting', icon: 'fa-solid fa-hand-fist' },
+          { name: 'Martial Arts', icon: 'fa-solid fa-hand-fist' },
           { name: 'Hockey', icon: 'fa-solid fa-hockey-puck' },
           { name: 'Football', icon: 'fa-solid fa-football' },
         ],
@@ -35,11 +35,14 @@ export const useMainStore = defineStore('store', {
     }
   },
   actions: {
-    async fetchArticles(sports: string[]) {
-      if (this.articles.length > 0) return
+    async fetchArticles(sports: string[], shown_articles: string[]) {
       this.loading = true
-      const response = await fetchSportsArticles(sports)
-      this.articles = mapToGridLayout(response)
+      const response = await fetchSportsArticles(sports, shown_articles)
+      if (this.articles.length === 0) {
+        this.articles = mapToGridLayout(response)
+      } else {
+        this.articles = [...this.articles, ...mapToGridLayout(response)]
+      }
       this.loading = false
     },
     async fetchRecommendations(likedArticles: string[]) {
@@ -83,6 +86,9 @@ export const useMainStore = defineStore('store', {
         NO: 'no',
       }
       this.selectedAnswers[questionId] = answerToRec[answer]
+    },
+    getShownArticleIds(): string[] {
+      return this.articles.flatMap((x) => x.map((x) => x.news_id))
     },
   },
 })
