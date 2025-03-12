@@ -14,18 +14,9 @@
               :style="'width: ' + progressStyling[currentRoute]"></div>
           </div>
 
-          <div class="d-flex align-items-center justify-content-center"></div>
           <RouterView />
           <div
-            class="d-flex justify-content-between p-3 bg-white position-fixed bottom-0 start-0 end-0 shadow">
-            <button
-              class="btn btn-primary"
-              @click="prev()"
-              :disabled="
-                currentRoute === 'startpage' || currentRoute === 'reciept'
-              ">
-              Previous
-            </button>
+            class="d-flex justify-content-center p-3 bg-white position-fixed bottom-0 start-0 end-0 shadow">
             <button
               v-if="currentRoute === 'recommend-articles'"
               class="btn btn-success"
@@ -49,7 +40,7 @@
 
 <script lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import { goToNextRoute, goToPrevRoute } from '../utils/utils'
+import { goToNextRoute } from '../utils/utils'
 import { useMainStore } from '../store/mainStore'
 import { questions, AnswerOptions } from '../utils/questionaire'
 import { submitUserStudy } from '../api/api'
@@ -138,9 +129,6 @@ export default {
       this.store.recieptId = response.id
       this.store.loading = false
     },
-    prev() {
-      goToPrevRoute(this.router, this.route)
-    },
     next() {
       window.scrollTo(0, 0)
       goToNextRoute(this.router, this.route)
@@ -154,6 +142,12 @@ export default {
 </script>
 <style scoped>
 .container {
-  padding-bottom: 120px;
+  padding-bottom: 140px;
+}
+
+button {
+  --bs-btn-padding-y: 1.25rem;
+  --bs-btn-padding-x: 4rem;
+  --bs-btn-font-size: 2rem;
 }
 </style>

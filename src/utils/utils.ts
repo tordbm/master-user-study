@@ -9,15 +9,6 @@ export function goToNextRoute(router, route) {
   }
 }
 
-export function goToPrevRoute(router, route) {
-  const routes = router.getRoutes().map((r) => r.path)
-  const currentIndex = routes.indexOf(route.path)
-
-  if (currentIndex > 0) {
-    router.push(routes[currentIndex - 1])
-  }
-}
-
 export function getSportFromIndex(sports: number[]): string[] {
   const sportsMap = {
     '0': 'soccer',

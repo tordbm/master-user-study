@@ -70,6 +70,7 @@ export const useMainStore = defineStore('store', {
     categoryToIcon(category: string) {
       const categoryToIconMap = Object.fromEntries([
         ['misc', 'fa-solid fa-rectangle-list'],
+        ['fighting', 'fa-solid fa-hand-fist'],
         ...this.categoryToIconList
           .flat()
           .map(({ name, icon }) => [name.toLowerCase(), icon]),
