@@ -18,4 +18,6 @@ export interface RecommendedArticle {
 export interface Question {
   question_id: string
   response: AnswerOptions
+  recommender1: string
+  recommender2: string
 }

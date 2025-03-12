@@ -79,11 +79,9 @@ export const useMainStore = defineStore('store', {
     },
     setAnswer(questionId: string, answer: string) {
       const answerToRec = {
-        LIST1: this.recommender1,
-        LIST2: this.recommender2,
+        LIST1: questionId === 'qa7' ? 'list1' : this.recommender1,
+        LIST2: questionId === 'qa7' ? 'list2' : this.recommender2,
         UNSURE: 'unsure',
-        YES: 'yes',
-        NO: 'no',
       }
       this.selectedAnswers[questionId] = answerToRec[answer]
     },
