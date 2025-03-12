@@ -19,54 +19,44 @@ const defaultOptions = [
 
 export const questions = [
   {
-    qaId: 'qa',
     question: 'Which list gives you the best first impression?',
     options: defaultOptions,
   },
   {
-    qaId: 'qa',
     question: 'Which list has more articles you find appealing?',
     options: defaultOptions,
   },
   {
-    qaId: 'qa',
     question: 'Which list has the more obviously bad recommendations for you?',
     options: defaultOptions,
   },
   {
-    qaId: 'qa',
     question:
       'Which list does a better job of putting more relevant articles at the top?',
     options: defaultOptions,
   },
   {
-    qaId: 'qa',
     question: 'Which list has more articles that are similar to each other?',
     options: defaultOptions,
   },
   {
-    qaId: 'qa',
     question: 'Which list has a wider variety of articles?',
     options: defaultOptions,
   },
   {
-    qaId: 'qa',
     question: 'Which list better understands your prefrence in sports?',
     options: defaultOptions,
   },
   {
-    qaId: 'qa',
     question: 'Which list is on the left?',
     options: defaultOptions,
   },
   {
-    qaId: 'qa',
     question:
       'Which list would you trust more to give you sports recommendations?',
     options: defaultOptions,
   },
   {
-    qaId: 'qa',
     question: 'Which list has more articles you did not expect?',
     options: defaultOptions,
   },

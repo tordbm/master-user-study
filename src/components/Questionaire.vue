@@ -4,7 +4,7 @@
       <Question
         class="mb-3"
         :key="index"
-        :qaId="item.qaId + index"
+        :qaId="index + 1"
         :index="index"
         :question="item.question"
         :options="item.options" />

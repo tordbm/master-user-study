@@ -53,7 +53,6 @@ import { goToNextRoute, goToPrevRoute } from '../utils/utils'
 import { useMainStore } from '../store/mainStore'
 import { questions, AnswerOptions } from '../utils/questionaire'
 import { submitUserStudy } from '../api/api'
-import type { Question } from '../utils/types'
 
 const preventOnRoutes = ['select-art', 'recommend-art']
 
@@ -127,12 +126,14 @@ export default {
     async submit() {
       this.next()
       this.store.loading = true
-      const questionaire: Question[] = Object.entries(
-        this.store.selectedAnswers
-      ).map(([question_id, response]) => ({
-        question_id,
-        response: response as AnswerOptions,
-      }))
+      const questionaire: any = Object.entries(this.store.selectedAnswers).map(
+        ([question_id, response]) => ({
+          question_id,
+          response: response as AnswerOptions,
+          recommender1: this.store.recommender1,
+          recommender2: this.store.recommender2,
+        })
+      )
       const response = await submitUserStudy(questionaire)
       this.store.recieptId = response.id
       this.store.loading = false

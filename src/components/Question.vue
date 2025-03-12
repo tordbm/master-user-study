@@ -35,7 +35,7 @@ import { useMainStore } from '../store/mainStore'
 
 export default defineComponent({
   props: {
-    qaId: { type: String, required: true },
+    qaId: { type: Number, required: true },
     index: { type: Number, required: true },
     question: { type: String, required: true },
     options: {

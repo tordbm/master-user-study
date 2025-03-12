@@ -14,7 +14,7 @@ export const useMainStore = defineStore('store', {
       recommendations: [] as RecommendedArticle[],
       recommender1: null as string | null,
       recommender2: null as string | null,
-      selectedAnswers: {} as Record<string, string>,
+      selectedAnswers: {} as Record<number, string>,
       categoryToIconList: [
         [
           { name: 'Soccer', icon: 'fa-solid fa-futbol' },
@@ -77,10 +77,10 @@ export const useMainStore = defineStore('store', {
 
       return categoryToIconMap[category] || 'fa-solid fa-question'
     },
-    setAnswer(questionId: string, answer: string) {
+    setAnswer(questionId: number, answer: string) {
       const answerToRec = {
-        LIST1: questionId === 'qa7' ? 'list1' : this.recommender1,
-        LIST2: questionId === 'qa7' ? 'list2' : this.recommender2,
+        LIST1: questionId === 7 ? 'list1' : this.recommender1,
+        LIST2: questionId === 7 ? 'list2' : this.recommender2,
         UNSURE: 'unsure',
       }
       this.selectedAnswers[questionId] = answerToRec[answer]
