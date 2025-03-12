@@ -24,7 +24,7 @@
           v-else
           icon="fa-solid fa-thumbs-up"
           size="xl"
-          style="color: #e11428" />
+          style="color: green" />
       </button>
       <button
         class="btn btn-link"
