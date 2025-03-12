@@ -63,6 +63,7 @@ export default defineComponent({
 <style scoped>
 .category-button {
   transition: background-color 0.3s ease;
+  --bs-btn-padding-y: 0.75rem;
 }
 
 .category-button.active {
