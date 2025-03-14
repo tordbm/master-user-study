@@ -1,5 +1,6 @@
 <template>
   <div class="questionaire">
+    <h2 class="text-start">Questionaire</h2>
     <div v-for="(item, index) in questions">
       <Question
         class="mb-3"
@@ -28,6 +29,6 @@ export default defineComponent({
 </script>
 <style lang="scss">
 .questionaire {
-  margin-top: 4rem;
+  margin-top: 1rem;
 }
 </style>

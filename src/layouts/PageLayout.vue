@@ -29,7 +29,7 @@
               class="btn btn-primary"
               @click="next()"
               :disabled="isNextDisabled">
-              Next
+              Next Step
             </button>
           </div>
         </div>
@@ -45,7 +45,7 @@ import { useMainStore } from '../store/mainStore'
 import { questions, AnswerOptions } from '../utils/questionaire'
 import { submitUserStudy } from '../api/api'
 
-const preventOnRoutes = ['select-art', 'recommend-art']
+const preventOnRoutes = ['select-cat', 'select-art', 'recommend-art']
 
 const preventPageUnload = (event: BeforeUnloadEvent) => {
   if (
@@ -82,8 +82,9 @@ export default {
     return {
       progressStyling: {
         startpage: '0%',
-        'select-articles': '33.3%',
-        'recommend-articles': '66.6%',
+        'select-categories': '25%',
+        'select-articles': '50%',
+        'recommend-articles': '75%',
         reciept: '100%',
       },
     }
@@ -94,10 +95,10 @@ export default {
     },
     isNextDisabled() {
       return (
-        (this.currentRoute === 'startpage' &&
+        (this.currentRoute === 'select-categories' &&
           this.store.selectedCategories.length !== 3) ||
         (this.currentRoute === 'select-articles' &&
-          this.store.likedArticles.length < 1) ||
+          this.store.likedArticles.length < 10) ||
         (this.currentRoute === 'recommend-articles' &&
           Object.keys(this.store.selectedAnswers).length !==
             questions.length) ||
@@ -146,8 +147,8 @@ export default {
 }
 
 button {
-  --bs-btn-padding-y: 1.25rem;
-  --bs-btn-padding-x: 4rem;
-  --bs-btn-font-size: 2rem;
+  --bs-btn-padding-y: 0.75rem;
+  --bs-btn-padding-x: 2rem;
+  --bs-btn-font-size: 1.5rem;
 }
 </style>

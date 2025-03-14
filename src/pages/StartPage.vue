@@ -1,73 +1,39 @@
 <template>
-  <div class="d-flex flex-column min-vh-100">
-    <h4 class="my-3">
-      Welcome to my recommender! Please select some sports you are interested
-      in!
-    </h4>
-    <h4
-      class="my-3"
-      :style="
-        store.selectedCategories.length > 3 ? 'color: red' : 'color: black'
-      ">
-      {{ store.selectedCategories.length }} of 3 selected
-    </h4>
-    <div class="container">
-      <div
-        v-for="(category, rowIndex) in store.categoryToIconList"
-        :key="rowIndex"
-        class="row mt-3">
-        <div v-for="(item, index) in category" :key="index" class="col-sm-4">
-          <button
-            class="btn category-button"
-            :class="{
-              active: store.selectedCategories.includes(rowIndex * 3 + index),
-            }"
-            @click="toggleActive(rowIndex * 3 + index)">
-            <CategoryCard :header="item.name" :icon="item.icon" />
-          </button>
-        </div>
-      </div>
+  <div class="d-flex flex-column position-fixed min-vh-100">
+    <div class="text-start">
+      <h4 class="my-3">Introduction</h4>
+      <p>
+        Welcome to an online user study on personalized news recommendation
+        algorithms. The purpose of this study is to test different
+        personalization techniques to gather insight into what works best in a
+        real world scenario. This study is part of a master's thesis at the
+        University of Bergen. No privacy information is collected, just your
+        answers.
+      </p>
+      <p>The survey consists of three main steps:</p>
+      <ol>
+        <li>Choosing your preferred sports genres.</li>
+        <li>
+          Selecting articles within these genres that best match your news
+          preferences.
+        </li>
+        <li>
+          Answering a questionnaire about which article recommendations you find
+          most relevant.
+        </li>
+      </ol>
+      <p>
+        Click the "Next" button at the bottom of the screen to progress through
+        each step. If the button is disabled, then the progress criteria have
+        not been met, i.e. more answers are needed.
+      </p>
+      <p>Estimated time of completion: <b>8 minutes</b></p>
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue'
-import CategoryCard from '../components/CategoryCard.vue'
-import { useMainStore } from '../store/mainStore'
-
-export default defineComponent({
-  components: {
-    CategoryCard,
-  },
-  setup() {
-    const store = useMainStore()
-    return {
-      store,
-    }
-  },
-  created() {
-    const clicked = localStorage.getItem('selectedCategories')
-    if (clicked) {
-      this.store.selectedCategories = JSON.parse(clicked).map(Number)
-    }
-  },
-  methods: {
-    toggleActive(index: number) {
-      this.store.addCategory(index)
-    },
-  },
-})
-</script>
-
 <style scoped>
-.category-button {
-  transition: background-color 0.3s ease;
-  --bs-btn-padding-y: 0.75rem;
-}
-
-.category-button.active {
-  background-color: green !important;
-  color: white;
+p,
+ol {
+  font-size: larger;
 }
 </style>

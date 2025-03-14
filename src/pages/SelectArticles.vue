@@ -1,7 +1,15 @@
 <template>
   <div class="d-flex flex-column min-vh-100" @scroll="handleScroll">
-    <h4 class="my-3">
-      Please like some articles you would be interested in reading
+    <h4 class="my-3">Article Selection</h4>
+    <p>
+      Please select 10 articles you find fits your news preference by clicking
+      the "like" button. To read more, click "Read More". To get more articles,
+      keep scrolling.
+    </p>
+    <h4
+      class="mt-2 mb-3 sticky-header"
+      :style="store.likedArticles.length > 10 ? 'color: red' : 'color: black'">
+      {{ store.likedArticles.length }} of 10 selected
     </h4>
     <ContentLoader :loading="store.articles.length === 0" />
     <div v-if="store.articles.length > 0" class="container">
@@ -45,17 +53,11 @@ export default defineComponent({
   },
   data() {
     return {
-      categories: [] as number[],
       sports: [] as string[],
     }
   },
   async created() {
-    const categories = localStorage.getItem('selectedCategories')
-    if (categories) {
-      this.categories = JSON.parse(categories).map(Number)
-    }
-
-    this.sports = getSportFromIndex(this.categories)
+    this.sports = getSportFromIndex(this.store.selectedCategories)
     await this.store.fetchArticles(this.sports, [])
   },
   mounted() {
@@ -83,3 +85,15 @@ export default defineComponent({
   },
 })
 </script>
+<style lang="css" scoped>
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+  padding: 10px;
+}
+p {
+  font-size: large;
+}
+</style>

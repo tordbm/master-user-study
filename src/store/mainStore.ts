@@ -62,10 +62,6 @@ export const useMainStore = defineStore('store', {
       } else {
         this.selectedCategories.push(index)
       }
-      localStorage.setItem(
-        'selectedCategories',
-        JSON.stringify(this.selectedCategories)
-      )
     },
     categoryToIcon(category: string) {
       const categoryToIconMap = Object.fromEntries([
