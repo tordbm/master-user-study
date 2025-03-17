@@ -1,17 +1,19 @@
 <template>
   <div
     class="card border-primary d-flex flex-column"
-    style="width: 22rem; height: 14rem; display: flex">
-    <div class="card-body d-flex flex-column">
-      <h6 class="card-title text-start no-wrap-truncate-text">
-        {{ header }}
-      </h6>
-      <font-awesome-icon v-if="icon" class="my-3" :icon="icon" size="2xl" />
-      <p class="card-text text-truncate">
+    style="width: 23rem; height: 25rem; display: flex">
+    <div class="card-body d-flex flex-column align-items-center flex-grow-1">
+      <img v-if="image" :src="imagePath" class="card-img-top" />
+      <h5 class="card-title text-start no-wrap-truncate-text mt-3 mb-0">
+        <b>{{ header }}</b>
+      </h5>
+      <!-- <font-awesome-icon v-if="icon" class="my-3" :icon="icon" size="2xl" /> -->
+
+      <!-- <p class="card-text text-truncate">
         {{ abstract }}
-      </p>
+      </p> -->
     </div>
-    <div class="d-flex justify-content-between p-2 mt-auto">
+    <div class="d-flex justify-content-between mt-auto">
       <button
         v-if="currentRoute !== 'recommend-articles'"
         class="btn"
@@ -79,12 +81,17 @@ export default defineComponent({
   props: {
     news_id: { type: String, required: true },
     header: { type: String, required: true },
-    icon: { type: null, String },
+    image: { type: null, String },
     abstract: { type: String, required: true },
   },
   computed: {
     currentRoute() {
       return this.$route.name
+    },
+    imagePath() {
+      if (!this.image) return ''
+      console.log('Image Path:', this.image)
+      return new URL(`${this.image}`, import.meta.url).href
     },
   },
   methods: {
@@ -102,6 +109,17 @@ export default defineComponent({
 </script>
 
 <style lang="css" scoped>
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.card-title {
+  min-height: 3rem;
+}
+
 .no-wrap-truncate-text {
   display: -webkit-box;
   line-clamp: 2;

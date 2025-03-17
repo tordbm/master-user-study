@@ -23,7 +23,7 @@
           class="col-sm-4 mx-auto d-flex justify-content-center">
           <ArticleCard
             :news_id="article.news_id"
-            :icon="store.categoryToIcon(article.general_category)"
+            :image="store.categoryToImage(article.general_category)"
             :header="article.title"
             :abstract="article.abstract" />
         </div>
