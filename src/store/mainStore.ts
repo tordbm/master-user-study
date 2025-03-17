@@ -65,15 +65,15 @@ export const useMainStore = defineStore('store', {
     },
     categoryToImage(category: string) {
       const image = {
-        fighting: '../images/martial_arts.png',
-        basketball: '../images/basketball.png',
-        football: '../images/football.png',
-        golf: '../images/golf.png',
-        hockey: '../images/hockey.png',
-        racing: '../images/racing.png',
-        soccer: '../images/soccer.png',
-        tennis: '../images/tennis.png',
-        baseball: '../images/baseball.png',
+        fighting: '/images/martial_arts.png',
+        basketball: '/images/basketball.png',
+        football: '/images/football.png',
+        golf: '/images/golf.png',
+        hockey: '/images/hockey.png',
+        racing: '/images/racing.png',
+        soccer: '/images/soccer.png',
+        tennis: '/images/tennis.png',
+        baseball: '/images/baseball.png',
       }
       return image[category]
     },

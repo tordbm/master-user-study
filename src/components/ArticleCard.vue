@@ -90,8 +90,7 @@ export default defineComponent({
     },
     imagePath() {
       if (!this.image) return ''
-      console.log('Image Path:', this.image)
-      return new URL(`${this.image}`, import.meta.url).href
+      return this.image
     },
   },
   methods: {
