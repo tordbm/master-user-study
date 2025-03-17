@@ -1,10 +1,11 @@
 <template>
   <div class="d-flex flex-column min-vh-100" @scroll="handleScroll">
     <h4 class="my-3">Step 2</h4>
-    <p>
+    <p class="text-start">
       Please select 10 articles you find fits your news preference by clicking
-      the "like" button. To read more, click "Read More". To get more articles,
-      keep scrolling.
+      the "Like" button in the bottom right. To read more, click "Read More".
+      Already read articles will turn light blue. To get more articles, keep
+      scrolling.
     </p>
     <h4
       class="mt-2 mb-3 sticky-header"

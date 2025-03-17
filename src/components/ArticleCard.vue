@@ -1,6 +1,7 @@
 <template>
   <div
     class="card border-primary d-flex flex-column"
+    :style="{ backgroundColor: isClicked ? '#f0f8ff' : '' }"
     style="width: 23rem; height: 25rem; display: flex">
     <div class="card-body d-flex flex-column align-items-center flex-grow-1">
       <img
@@ -16,19 +17,21 @@
       <button
         v-if="currentRoute !== 'recommend-articles'"
         class="btn"
-        @click="toggleActive(news_id)">
+        @click="likeArticle(news_id)">
         <font-awesome-icon
           v-if="!store.likedArticles.includes(news_id)"
           icon="fa-regular fa-thumbs-up"
-          size="xl" />
+          size="2xl" />
         <font-awesome-icon
           v-else
           icon="fa-solid fa-thumbs-up"
-          size="xl"
+          size="2xl"
           style="color: green" />
       </button>
       <button
         class="btn btn-link"
+        style="font-size: larger"
+        @click="clicked"
         data-bs-toggle="modal"
         :data-bs-target="'#fullArticle' + news_id">
         Read More
@@ -44,9 +47,7 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
-        <!-- Modal Body -->
         <div class="modal-body">
-          <!-- Image at the top -->
           <div class="text-center mb-3">
             <img
               v-if="image"
@@ -54,19 +55,14 @@
               alt="Article Image"
               class="img-fluid" />
           </div>
-
-          <!-- Title under the image -->
           <h1 class="modal-title text-start fs-5 mb-3">
             {{ header }}
           </h1>
 
-          <!-- Abstract below the title -->
           <p class="modal-abstract text-start">
             {{ abstract }}
           </p>
         </div>
-
-        <!-- Modal Footer -->
         <div class="modal-footer">
           <button
             type="button"
@@ -98,6 +94,11 @@ export default defineComponent({
     image: { type: null, String },
     abstract: { type: String, required: true },
   },
+  data() {
+    return {
+      isClicked: false,
+    }
+  },
   computed: {
     currentRoute() {
       return this.$route.name
@@ -108,7 +109,10 @@ export default defineComponent({
     },
   },
   methods: {
-    toggleActive(id: string) {
+    clicked() {
+      this.isClicked = !this.isClicked
+    },
+    likeArticle(id: string) {
       if (this.store.likedArticles.includes(id)) {
         this.store.likedArticles = this.store.likedArticles.filter(
           (i: string) => i !== id
