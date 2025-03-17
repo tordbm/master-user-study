@@ -36,27 +36,37 @@
     </div>
   </div>
   <!-- Modal -->
-  <div class="modal fade" :id="'fullArticle' + news_id" tabindex="-1">
+  <div
+    class="modal fade"
+    :id="'fullArticle' + news_id"
+    tabindex="-1"
+    aria-labelledby="fullArticleLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
-        <div class="modal-header">
-          <img
-            v-if="image"
-            :src="imagePath"
-            alt="Article Image"
-            class="img-fluid" />
-          <h1 class="modal-title text-start fs-5">
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <!-- Image at the top -->
+          <div class="text-center mb-3">
+            <img
+              v-if="image"
+              :src="imagePath"
+              alt="Article Image"
+              class="img-fluid" />
+          </div>
+
+          <!-- Title under the image -->
+          <h1 class="modal-title text-start fs-5 mb-3">
             {{ header }}
           </h1>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"></button>
+
+          <!-- Abstract below the title -->
+          <p class="modal-abstract text-start">
+            {{ abstract }}
+          </p>
         </div>
-        <div class="modal-body text-start">
-          {{ abstract }}
-        </div>
+
+        <!-- Modal Footer -->
         <div class="modal-footer">
           <button
             type="button"
