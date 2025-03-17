@@ -1,6 +1,10 @@
 <template>
   <div class="d-flex flex-column min-vh-100">
-    <h4 class="my-3">Recommended articles based on your selection</h4>
+    <h4 class="my-3">Step 3</h4>
+    <p>
+      Below are two proposed lists of articles based on your previous selection.
+      Please answer the questionaire and click "Submit" when completed
+    </p>
     <ContentLoader :loading="store.loading">
       <div class="container">
         <div class="row mt-3">
@@ -14,7 +18,7 @@
                 <h2 v-if="rowIndex === 0" class="text-start">List 1</h2>
                 <ArticleCard
                   :news_id="articleRow[0].news_id"
-                  :icon="store.categoryToIcon(articleRow[0].general_category)"
+                  :image="store.categoryToImage(articleRow[0].general_category)"
                   :header="articleRow[0].title"
                   :abstract="articleRow[0].abstract" />
               </div>
@@ -22,7 +26,7 @@
                 <h2 v-if="rowIndex === 0" class="text-start">List 2</h2>
                 <ArticleCard
                   :news_id="articleRow[1].news_id"
-                  :icon="store.categoryToIcon(articleRow[1].general_category)"
+                  :image="store.categoryToImage(articleRow[1].general_category)"
                   :header="articleRow[1].title"
                   :abstract="articleRow[1].abstract" />
               </div>
@@ -64,3 +68,8 @@ export default defineComponent({
   },
 })
 </script>
+<style scoped>
+p {
+  font-size: large;
+}
+</style>

@@ -3,15 +3,14 @@
     class="card border-primary d-flex flex-column"
     style="width: 23rem; height: 25rem; display: flex">
     <div class="card-body d-flex flex-column align-items-center flex-grow-1">
-      <img v-if="image" :src="imagePath" class="card-img-top" />
+      <img
+        v-if="image"
+        :src="imagePath"
+        class="card-img-top"
+        alt="Article Image" />
       <h5 class="card-title text-start no-wrap-truncate-text mt-3 mb-0">
         <b>{{ header }}</b>
       </h5>
-      <!-- <font-awesome-icon v-if="icon" class="my-3" :icon="icon" size="2xl" /> -->
-
-      <!-- <p class="card-text text-truncate">
-        {{ abstract }}
-      </p> -->
     </div>
     <div class="d-flex justify-content-between mt-auto">
       <button
@@ -41,6 +40,11 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
+          <img
+            v-if="image"
+            :src="imagePath"
+            alt="Article Image"
+            class="img-fluid" />
           <h1 class="modal-title text-start fs-5">
             {{ header }}
           </h1>

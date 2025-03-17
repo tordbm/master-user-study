@@ -1,12 +1,13 @@
 <template>
   <div class="d-flex flex-column min-vh-100">
-    <h4 class="my-3">
+    <h4 class="my-3">Step 1</h4>
+    <p>
       Please click on 3 sports you are interested in reading news articles about
-    </h4>
+    </p>
     <h4
       class="my-3"
       :style="
-        store.selectedCategories.length > 3 ? 'color: red' : 'color: black'
+        store.selectedCategories.length !== 3 ? 'color: red' : 'color: black'
       ">
       {{ store.selectedCategories.length }} of 3 selected
     </h4>
@@ -57,6 +58,10 @@ export default defineComponent({
 .category-button {
   transition: background-color 0.3s ease;
   --bs-btn-padding-y: 0.75rem;
+}
+
+p {
+  font-size: large;
 }
 
 .category-button.active {

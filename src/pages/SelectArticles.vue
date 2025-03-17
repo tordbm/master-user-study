@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex-column min-vh-100" @scroll="handleScroll">
-    <h4 class="my-3">Article Selection</h4>
+    <h4 class="my-3">Step 2</h4>
     <p>
       Please select 10 articles you find fits your news preference by clicking
       the "like" button. To read more, click "Read More". To get more articles,
@@ -8,7 +8,9 @@
     </p>
     <h4
       class="mt-2 mb-3 sticky-header"
-      :style="store.likedArticles.length > 10 ? 'color: red' : 'color: black'">
+      :style="
+        store.likedArticles.length !== 10 ? 'color: red' : 'color: black'
+      ">
       {{ store.likedArticles.length }} of 10 selected
     </h4>
     <ContentLoader :loading="store.articles.length === 0" />

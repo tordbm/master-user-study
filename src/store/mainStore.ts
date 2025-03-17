@@ -74,6 +74,7 @@ export const useMainStore = defineStore('store', {
         soccer: '/images/soccer.png',
         tennis: '/images/tennis.png',
         baseball: '/images/baseball.png',
+        misc: '/images/misc.png',
       }
       return image[category]
     },

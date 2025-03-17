@@ -98,7 +98,7 @@ export default {
         (this.currentRoute === 'select-categories' &&
           this.store.selectedCategories.length !== 3) ||
         (this.currentRoute === 'select-articles' &&
-          this.store.likedArticles.length < 10) ||
+          this.store.likedArticles.length !== 10) ||
         (this.currentRoute === 'recommend-articles' &&
           Object.keys(this.store.selectedAnswers).length !==
             questions.length) ||
