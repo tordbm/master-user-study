@@ -1,10 +1,7 @@
 <template>
   <div class="d-flex flex-column min-vh-100">
-    <h4 class="my-3">Step 3</h4>
-    <p>
-      Below are two proposed lists of articles based on your previous selection.
-      Please answer the questionaire and click "Submit" when completed
-    </p>
+    <h2 class="my-3">Step 3</h2>
+    <InfoBox :text="info" />
     <ContentLoader :loading="store.loading">
       <div class="container">
         <div class="row mt-3">
@@ -48,17 +45,24 @@ import ArticleCard from '../components/ArticleCard.vue'
 import ContentLoader from '../components/ContentLoader.vue'
 import { useMainStore } from '../store/mainStore'
 import Questionaire from '../components/Questionaire.vue'
+import InfoBox from '../components/InfoBox.vue'
 
 export default defineComponent({
   components: {
     ArticleCard,
     ContentLoader,
     Questionaire,
+    InfoBox,
   },
   setup() {
     const store = useMainStore()
     return {
       store,
+    }
+  },
+  data() {
+    return {
+      info: " Below are two proposed lists of articles based on your previous selection. Please answer the questionaire and click \"Submit\" when completed"
     }
   },
   async created() {

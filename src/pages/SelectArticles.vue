@@ -1,12 +1,7 @@
 <template>
   <div class="d-flex flex-column min-vh-100" @scroll="handleScroll">
-    <h4 class="my-3">Step 2</h4>
-    <p class="text-start">
-      Please select 10 articles you find fits your news preference by clicking
-      the "Like" button in the bottom right. To read more, click "Read More".
-      Already read articles will turn light blue. To get more articles, keep
-      scrolling.
-    </p>
+    <h2 class="my-3">Step 2</h2>
+    <InfoBox :text="info" />
     <h4
       class="mt-2 mb-3 sticky-header"
       :style="
@@ -42,11 +37,13 @@ import ArticleCard from '../components/ArticleCard.vue'
 import { getSportFromIndex } from '../utils/utils'
 import ContentLoader from '../components/ContentLoader.vue'
 import { useMainStore } from '../store/mainStore'
+import InfoBox from '../components/InfoBox.vue'
 
 export default defineComponent({
   components: {
     ArticleCard,
     ContentLoader,
+    InfoBox,
   },
   setup() {
     const store = useMainStore()
@@ -57,6 +54,7 @@ export default defineComponent({
   data() {
     return {
       sports: [] as string[],
+      info: "Please select 10 articles you find fits your news preference by clicking the \"Like\" button in the bottom left. To read more, click \"Read More\". Already read articles will turn light blue. To get more articles, keep scrolling."
     }
   },
   async created() {
@@ -95,8 +93,5 @@ export default defineComponent({
   background: white;
   z-index: 10;
   padding: 10px;
-}
-p {
-  font-size: large;
 }
 </style>

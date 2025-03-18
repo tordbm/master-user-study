@@ -1,7 +1,7 @@
 <template>
   <div
-    class="card border-primary d-flex flex-column"
-    :style="{ backgroundColor: isClicked ? '#f0f8ff' : '' }"
+    class="card d-flex flex-column"
+    :style="{ backgroundColor: isClicked ? '#f0f8ff' : '#f8f9fa' }"
     style="width: 23rem; height: 25rem; display: flex">
     <div class="card-body d-flex flex-column align-items-center flex-grow-1">
       <img
