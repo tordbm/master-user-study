@@ -93,8 +93,8 @@ export default defineComponent({
     }
   },
   props: {
-    width: { type: String },
-    height: { type: String },
+    width: { type: String, required: true },
+    height: { type: String, required: true },
     news_id: { type: String, required: true },
     header: { type: String, required: true },
     image: { type: null, String },

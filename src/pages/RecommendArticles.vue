@@ -5,7 +5,7 @@
         src="/images/rotate-phone.png"
         alt="Rotate your phone"
         class="rotate-animation" />
-      <p>Please flip your phone horizontally</p>
+      <p>Please flip your device horizontally</p>
     </div>
     <h2 class="my-3">Step 3</h2>
     <p>
@@ -41,6 +41,9 @@
                   :abstract="articleRow[1].abstract" />
               </div>
             </div>
+          </div>
+          <div class="col-sm-4">
+            <Questionaire />
           </div>
         </div>
       </div>
@@ -112,7 +115,7 @@ export default defineComponent({
     }
   },
   async created() {
-    this.isMobile = screen.width <= 760
+    this.isMobile = screen.width <= 900
     this.checkOrientation()
 
     if (this.isMobile) {
