@@ -5,14 +5,14 @@
         src="/images/rotate-phone.png"
         alt="Rotate your phone"
         class="rotate-animation" />
-      <p>Flip your phone for a better experience</p>
+      <p>Please flip your phone horizontally</p>
     </div>
     <h2 class="my-3">Step 3</h2>
     <p>
       {{ info }}
     </p>
     <ContentLoader :loading="store.loading">
-      <div class="container">
+      <div v-if="!isMobile" class="container">
         <div class="row mt-3">
           <!-- List 1 and List 2 Columns -->
           <div class="col-sm-8">
@@ -23,8 +23,8 @@
               <div class="col-sm-6">
                 <h2 v-if="rowIndex === 0" class="text-start">List 1</h2>
                 <ArticleCard
-                  :height="isMobile ? '16rem' : '25rem'"
-                  :width="isMobile ? '12rem' : '23rem'"
+                  height="25rem"
+                  width="23rem"
                   :news_id="articleRow[0].news_id"
                   :image="store.categoryToImage(articleRow[0].general_category)"
                   :header="articleRow[0].title"
@@ -33,8 +33,41 @@
               <div class="col-sm-6">
                 <h2 v-if="rowIndex === 0" class="text-start">List 2</h2>
                 <ArticleCard
-                  :height="isMobile ? '16rem' : '25rem'"
-                  :width="isMobile ? '12rem' : '23rem'"
+                  height="25rem"
+                  width="23rem"
+                  :news_id="articleRow[1].news_id"
+                  :image="store.categoryToImage(articleRow[1].general_category)"
+                  :header="articleRow[1].title"
+                  :abstract="articleRow[1].abstract" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div v-else>
+        <div class="row mt-3">
+          <!-- List 1 and List 2 Columns -->
+          <div class="col-sm-8">
+            <div
+              v-for="(articleRow, rowIndex) in store.recommendations"
+              :key="rowIndex"
+              class="row mt-3">
+              <div class="col-sm-6">
+                <h2 v-if="rowIndex === 0" class="text-start">List 1</h2>
+                <ArticleCard
+                  height="16rem"
+                  width="12rem"
+                  :news_id="articleRow[0].news_id"
+                  :image="store.categoryToImage(articleRow[0].general_category)"
+                  :header="articleRow[0].title"
+                  :abstract="articleRow[0].abstract" />
+              </div>
+              <div class="col-sm-6">
+                <h2 v-if="rowIndex === 0" class="text-start">List 2</h2>
+                <ArticleCard
+                  height="16rem"
+                  width="12rem"
                   :news_id="articleRow[1].news_id"
                   :image="store.categoryToImage(articleRow[1].general_category)"
                   :header="articleRow[1].title"
@@ -127,19 +160,18 @@ p {
 .rotate-animation {
   width: 50px;
   height: 50px;
-  animation: rotate 2s infinite linear;
+  animation: rotate 5s infinite linear;
 }
 
 @keyframes rotate {
-  0% {
+  100% {
     transform: rotate(0deg);
   }
-  100% {
+  0% {
     transform: rotate(360deg);
   }
 }
 
-/* Show message only in portrait mode when isMobile is true */
 @media (orientation: portrait) {
   .rotate-device {
     display: block;
