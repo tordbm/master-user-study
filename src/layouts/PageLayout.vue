@@ -142,7 +142,7 @@ export default {
 }
 </script>
 <style scoped>
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 850px) {
   .container {
     padding-left: 0px;
     padding-right: 0px;
