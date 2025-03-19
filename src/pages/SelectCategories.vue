@@ -1,7 +1,9 @@
 <template>
   <div class="d-flex flex-column min-vh-100">
     <h2 class="my-3">Step 1</h2>
-    <InfoBox :text="info" />
+    <p>
+      {{ info }}
+    </p>
     <h4
       class="my-3"
       :style="
@@ -33,12 +35,10 @@
 import { defineComponent } from 'vue'
 import CategoryCard from '../components/CategoryCard.vue'
 import { useMainStore } from '../store/mainStore'
-import InfoBox from '../components/InfoBox.vue'
 
 export default defineComponent({
   components: {
     CategoryCard,
-    InfoBox,
   },
   setup() {
     const store = useMainStore()
@@ -48,7 +48,7 @@ export default defineComponent({
   },
   data() {
     return {
-      info: "Please click on 3 sports you are interested in reading news articles about"
+      info: 'Please click on 3 sports you are interested in reading news articles about',
     }
   },
   methods: {
@@ -59,7 +59,7 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style lang="css" scoped>
 .category-button {
   transition: background-color 0.3s ease;
   --bs-btn-padding-y: 0.75rem;

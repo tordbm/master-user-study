@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column position-fixed min-vh-100">
+  <div class="d-flex flex-column min-vh-100">
     <div class="container text-start">
       <h4 class="my-3">Introduction</h4>
       <p>

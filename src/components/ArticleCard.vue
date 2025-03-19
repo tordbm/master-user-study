@@ -1,8 +1,12 @@
 <template>
   <div
     class="card d-flex flex-column"
-    :style="{ backgroundColor: isClicked ? '#f0f8ff' : '#f8f9fa' }"
-    style="width: 23rem; height: 25rem; display: flex">
+    :style="{
+      backgroundColor: isClicked ? '#f0f8ff' : '#f8f9fa',
+      width: width,
+      height: height,
+      display: 'flex',
+    }">
     <div class="card-body d-flex flex-column align-items-center flex-grow-1">
       <img
         v-if="image"
@@ -89,6 +93,8 @@ export default defineComponent({
     }
   },
   props: {
+    width: { type: String },
+    height: { type: String },
     news_id: { type: String, required: true },
     header: { type: String, required: true },
     image: { type: null, String },

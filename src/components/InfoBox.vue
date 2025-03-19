@@ -1,7 +1,7 @@
 <template>
-    <div class="alert alert-light" role="alert">
-        <p>{{ props.text }}</p>
-    </div>
+  <div class="alert alert-light" role="alert">
+    <p>{{ props.text }}</p>
+  </div>
 </template>
 <script setup lang="ts">
 const props = defineProps<{

@@ -1,7 +1,9 @@
 <template>
   <div class="d-flex flex-column min-vh-100" @scroll="handleScroll">
     <h2 class="my-3">Step 2</h2>
-    <InfoBox :text="info" />
+    <p>
+      {{ info }}
+    </p>
     <h4
       class="mt-2 mb-3 sticky-header"
       :style="
@@ -20,6 +22,8 @@
           :key="colIndex"
           class="col-sm-4 mx-auto d-flex justify-content-center">
           <ArticleCard
+            height="25rem"
+            width="23rem"
             :news_id="article.news_id"
             :image="store.categoryToImage(article.general_category)"
             :header="article.title"
@@ -37,13 +41,11 @@ import ArticleCard from '../components/ArticleCard.vue'
 import { getSportFromIndex } from '../utils/utils'
 import ContentLoader from '../components/ContentLoader.vue'
 import { useMainStore } from '../store/mainStore'
-import InfoBox from '../components/InfoBox.vue'
 
 export default defineComponent({
   components: {
     ArticleCard,
     ContentLoader,
-    InfoBox,
   },
   setup() {
     const store = useMainStore()
@@ -54,7 +56,7 @@ export default defineComponent({
   data() {
     return {
       sports: [] as string[],
-      info: "Please select 10 articles you find fits your news preference by clicking the \"Like\" button in the bottom left. To read more, click \"Read More\". Already read articles will turn light blue. To get more articles, keep scrolling."
+      info: 'Please select 10 articles you find fits your news preference by clicking the "Like" button in the bottom left. To read more, click "Read More". Already read articles will turn light blue. To get more articles, keep scrolling.',
     }
   },
   async created() {
@@ -93,5 +95,9 @@ export default defineComponent({
   background: white;
   z-index: 10;
   padding: 10px;
+}
+
+p {
+  font-size: large;
 }
 </style>
