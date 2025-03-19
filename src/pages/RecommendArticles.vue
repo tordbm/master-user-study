@@ -56,7 +56,7 @@
               v-for="(articleRow, rowIndex) in store.recommendations"
               :key="rowIndex"
               class="row mt-3">
-              <div class="col-sm-6">
+              <div class="col-sm-6 mr-3">
                 <h2 v-if="rowIndex === 0" class="text-start">List 1</h2>
                 <ArticleCard
                   height="16rem"
@@ -66,7 +66,7 @@
                   :header="articleRow[0].title"
                   :abstract="articleRow[0].abstract" />
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-6 mr-3">
                 <h2 v-if="rowIndex === 0" class="text-start">List 2</h2>
                 <ArticleCard
                   height="16rem"
