@@ -142,6 +142,13 @@ export default {
 }
 </script>
 <style scoped>
+@media screen and (max-width: 900px) {
+  .container {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 140px;
+  }
+}
 .container {
   padding-bottom: 140px;
 }
