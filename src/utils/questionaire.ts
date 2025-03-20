@@ -8,6 +8,8 @@ export enum AnswerOptions {
   TF_IDF = 'tf_idf',
   OPEN_AI = 'open_ai',
   S_BERT = 's_bert',
+  LIST1 = 'list1',
+  LIST2 = 'list2',
   UNSURE = 'unsure',
 }
 

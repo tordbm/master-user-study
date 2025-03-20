@@ -3,7 +3,7 @@
     <div class="card-body">
       <div class="card-title text-start">
         <b>
-          {{ index + 1 + '. ' + question }}
+          {{ qaId + '. ' + question }}
         </b>
       </div>
       <div class="card-text">
@@ -14,13 +14,13 @@
           <input
             class="form-check-input"
             type="radio"
-            :name="'question' + index"
-            :id="'inlineRadio' + index + '-' + optIndex"
+            :name="'question' + qaId"
+            :id="'inlineRadio' + qaId + '-' + optIndex"
             :value="option.value"
-            v-model="selectedOption" />
+            v-model="store.selectedAnswers[qaId]" />
           <label
             class="form-check-label"
-            :for="'inlineRadio' + index + '-' + optIndex">
+            :for="'inlineRadio' + qaId + '-' + optIndex">
             {{ option.text }}
           </label>
         </div>
@@ -46,16 +46,6 @@ export default defineComponent({
   setup() {
     const store = useMainStore()
     return { store }
-  },
-  computed: {
-    selectedOption: {
-      get() {
-        return this.store.selectedAnswers[this.index] || null
-      },
-      set(value: string) {
-        this.store.setAnswer(this.qaId, value)
-      },
-    },
   },
 })
 </script>

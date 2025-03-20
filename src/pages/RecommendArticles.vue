@@ -15,13 +15,13 @@
       <div v-if="!isMobile" class="container">
         <div class="row mt-3">
           <!-- List 1 and List 2 Columns -->
-          <div class="col-sm-8">
+          <div class="col-sm-7">
             <div
               v-for="(articleRow, rowIndex) in store.recommendations"
               :key="rowIndex"
               class="row mt-3">
-              <div class="col-sm-5">
-                <h2 v-if="rowIndex === 0" class="text-start">List 1</h2>
+              <div class="col-sm-6">
+                <h2 v-if="rowIndex === 0" class="text-center">List 1</h2>
                 <ArticleCard
                   height="22rem"
                   width="20rem"
@@ -30,8 +30,8 @@
                   :header="articleRow[0].title"
                   :abstract="articleRow[0].abstract" />
               </div>
-              <div class="col-sm-5">
-                <h2 v-if="rowIndex === 0" class="text-start">List 2</h2>
+              <div class="col-sm-6">
+                <h2 v-if="rowIndex === 0" class="text-center">List 2</h2>
                 <ArticleCard
                   height="22rem"
                   width="20rem"
@@ -42,7 +42,7 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-5">
             <Questionaire />
           </div>
         </div>

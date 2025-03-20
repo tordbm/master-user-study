@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { fetchRecommendedArticles, fetchSportsArticles } from '../api/api'
 import { mapToCorrectColumnLayout, mapToGridLayout } from '../utils/utils'
 import type { Article, RecommendedArticle } from '../utils/types'
+import { reactive } from 'vue'
 
 export const useMainStore = defineStore('store', {
   state: () => {
@@ -14,7 +15,7 @@ export const useMainStore = defineStore('store', {
       recommendations: [] as RecommendedArticle[],
       recommender1: null as string | null,
       recommender2: null as string | null,
-      selectedAnswers: {} as Record<number, string>,
+      selectedAnswers: reactive({} as Record<number, string | null>),
       categoryToIconList: [
         [
           { name: 'Soccer', icon: 'fa-solid fa-futbol' },
@@ -89,7 +90,7 @@ export const useMainStore = defineStore('store', {
 
       return categoryToIconMap[category] || 'fa-solid fa-question'
     },
-    setAnswer(questionId: number, answer: string) {
+    transformAnswersToRec(questionId: number, answer: string) {
       const answerToRec = {
         LIST1: questionId === 15 ? 'list1' : this.recommender1,
         LIST2: questionId === 15 ? 'list2' : this.recommender2,

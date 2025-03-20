@@ -44,6 +44,7 @@ import { goToNextRoute } from '../utils/utils'
 import { useMainStore } from '../store/mainStore'
 import { questions, AnswerOptions } from '../utils/questionaire'
 import { submitUserStudy } from '../api/api'
+import type { Question } from '../utils/types'
 
 const preventOnRoutes = ['select-cat', 'select-art', 'recommend-art']
 
@@ -118,14 +119,18 @@ export default {
     async submit() {
       this.next()
       this.store.loading = true
-      const questionaire: any = Object.entries(this.store.selectedAnswers).map(
-        ([question_id, response]) => ({
-          question_id,
-          response: response as AnswerOptions,
-          recommender1: this.store.recommender1,
-          recommender2: this.store.recommender2,
-        })
-      )
+
+      const questionaire: Question[] = Object.entries(
+        this.store.selectedAnswers
+      ).map(([question_id, response]) => ({
+        question_id: Number(question_id),
+        response: this.transformResponseToRec(
+          Number(question_id),
+          response
+        ) as AnswerOptions,
+        recommender1: this.store.recommender1,
+        recommender2: this.store.recommender2,
+      }))
       const response = await submitUserStudy(questionaire)
       this.store.recieptId = response.id
       this.store.loading = false
@@ -133,6 +138,17 @@ export default {
     next() {
       window.scrollTo(0, 0)
       goToNextRoute(this.router, this.route)
+    },
+    transformResponseToRec(
+      question_id: number,
+      response: string
+    ): AnswerOptions {
+      const answerToRec = {
+        LIST1: question_id === 15 ? 'list1' : this.store.recommender1,
+        LIST2: question_id === 15 ? 'list2' : this.store.recommender2,
+        UNSURE: 'unsure',
+      }
+      return answerToRec[response]
     },
   },
   beforeUnmount() {
