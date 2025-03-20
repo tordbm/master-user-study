@@ -12,11 +12,7 @@
       @click="clicked"
       data-bs-toggle="modal"
       :data-bs-target="'#fullArticle' + news_id">
-      <img
-        v-if="image"
-        :src="imagePath"
-        class="card-img-top"
-        alt="Article Image" />
+      <img v-if="image" :src="image" class="card-img-top" alt="Article Image" />
       <h5 class="card-title text-start no-wrap-truncate-text mt-3 mb-0">
         <b>{{ header }}</b>
       </h5>
@@ -59,7 +55,7 @@
           <div class="text-center mb-3">
             <img
               v-if="image"
-              :src="imagePath"
+              :src="image"
               alt="Article Image"
               class="img-fluid" />
           </div>
@@ -113,14 +109,10 @@ export default defineComponent({
     currentRoute() {
       return this.$route.name
     },
-    imagePath() {
-      if (!this.image) return ''
-      return this.image
-    },
   },
   methods: {
     clicked() {
-      this.isClicked = !this.isClicked
+      this.isClicked = true
     },
     likeArticle(id: string) {
       if (this.store.likedArticles.includes(id)) {
