@@ -38,10 +38,12 @@ export default defineComponent({
     return {
       questions,
       currentPage: 1,
-      questionsPerPage: 10,
     }
   },
   computed: {
+    questionsPerPage() {
+      return screen.width <= 900 ? 4 : 10
+    },
     paginatedQuestions() {
       const start = (this.currentPage - 1) * this.questionsPerPage
       return this.questions.slice(start, start + this.questionsPerPage)
