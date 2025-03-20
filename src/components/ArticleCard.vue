@@ -2,12 +2,16 @@
   <div
     class="card d-flex flex-column"
     :style="{
-      backgroundColor: isClicked ? '#f0f8ff' : '#f8f9fa',
+      backgroundColor: isClicked ? '#dbeeff' : '#f8f9fa',
       width: width,
       height: height,
       display: 'flex',
     }">
-    <div class="card-body d-flex flex-column align-items-center flex-grow-1">
+    <div
+      class="card-body d-flex flex-column align-items-center flex-grow-1 btn"
+      @click="clicked"
+      data-bs-toggle="modal"
+      :data-bs-target="'#fullArticle' + news_id">
       <img
         v-if="image"
         :src="imagePath"
