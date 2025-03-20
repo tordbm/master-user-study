@@ -20,21 +20,21 @@
               v-for="(articleRow, rowIndex) in store.recommendations"
               :key="rowIndex"
               class="row mt-3">
-              <div class="col-sm-6">
+              <div class="col-sm-5">
                 <h2 v-if="rowIndex === 0" class="text-start">List 1</h2>
                 <ArticleCard
-                  height="25rem"
-                  width="23rem"
+                  height="22rem"
+                  width="20rem"
                   :news_id="articleRow[0].news_id"
                   :image="store.categoryToImage(articleRow[0].general_category)"
                   :header="articleRow[0].title"
                   :abstract="articleRow[0].abstract" />
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-5">
                 <h2 v-if="rowIndex === 0" class="text-start">List 2</h2>
                 <ArticleCard
-                  height="25rem"
-                  width="23rem"
+                  height="22rem"
+                  width="20rem"
                   :news_id="articleRow[1].news_id"
                   :image="store.categoryToImage(articleRow[1].general_category)"
                   :header="articleRow[1].title"
