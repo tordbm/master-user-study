@@ -136,7 +136,9 @@ export default {
       this.store.loading = false
     },
     next() {
-      window.scrollTo(0, 0)
+      setTimeout(() => {
+        window.scrollTo(0, 0)
+      }, 0)
       goToNextRoute(this.router, this.route)
     },
     transformResponseToRec(

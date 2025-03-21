@@ -56,7 +56,7 @@ export default defineComponent({
   methods: {
     nextPage() {
       if (this.currentPage < this.totalPages) {
-        window.scrollTo(0, 0)
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
         this.scrollToTop()
         this.currentPage++
       }
@@ -64,7 +64,7 @@ export default defineComponent({
     prevPage() {
       if (this.currentPage > 1) {
         this.scrollToTop()
-        window.scrollTo(0, 0)
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
         this.currentPage--
       }
     },
