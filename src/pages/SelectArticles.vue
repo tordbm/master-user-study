@@ -2,8 +2,9 @@
   <div class="d-flex flex-column min-vh-100" @scroll="handleScroll">
     <h2 class="my-3">Step 2</h2>
     <p>
-      {{ info }}
+      <b>{{ info }}</b>
     </p>
+    <hr class="my-4" />
     <h4
       class="mt-2 mb-3 sticky-header"
       :style="

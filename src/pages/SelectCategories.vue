@@ -2,8 +2,9 @@
   <div class="d-flex flex-column min-vh-100">
     <h2 class="my-3">Step 1</h2>
     <p>
-      {{ info }}
+      <b>{{ info }}</b>
     </p>
+    <hr class="my-4" />
     <h4
       class="my-3"
       :style="
@@ -48,7 +49,7 @@ export default defineComponent({
   },
   data() {
     return {
-      info: 'Please click on 3 sports you are interested in reading news articles about',
+      info: 'Please click on 3 sports genres you are interested in reading news articles about.',
     }
   },
   methods: {

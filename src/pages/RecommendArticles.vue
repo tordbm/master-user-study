@@ -9,8 +9,9 @@
     </div>
     <h2 class="my-3">Step 3</h2>
     <p>
-      {{ info }}
+      <b>{{ info }}</b>
     </p>
+    <hr class="my-4" />
     <ContentLoader :loading="store.loading">
       <div v-if="!isMobile" class="container">
         <div class="row mt-3">
@@ -109,7 +110,7 @@ export default defineComponent({
   },
   data() {
     return {
-      info: ' Below are two proposed lists of articles based on your previous selection. Please answer the questionaire and click "Submit" when completed',
+      info: 'Below are two proposed lists of articles based on your previous selection. Look through both lists and their content. When ready, please answer the questionaire to the right and click "Submit" when completed.',
       isMobile: false,
       showRotateMessage: false,
     }

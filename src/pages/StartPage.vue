@@ -23,9 +23,10 @@
         </li>
       </ol>
       <p>
-        Click the "Next" button at the bottom of the screen to progress through
-        each step. If the button is disabled, then the progress criteria have
-        not been met, i.e. more answers are needed.
+        Click the "Next Step" button at the bottom of the screen to progress
+        through each step. At each step, additional information can be found at
+        the top of the screen. If the button is disabled, then the progress
+        criteria have not been met, i.e. more answers are needed.
       </p>
       <p>Estimated time of completion: <b>8 minutes</b></p>
     </div>
