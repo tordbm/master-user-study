@@ -18,23 +18,24 @@ export const useMainStore = defineStore('store', {
       selectedAnswers: reactive({} as Record<number, string | null>),
       categoryToIconList: [
         [
-          { name: 'Soccer', icon: 'fa-solid fa-futbol' },
-          { name: 'Basketball', icon: 'fa-solid fa-basketball' },
-          { name: 'Golf', icon: 'fa-solid fa-golf-ball' },
+          { name: 'Soccer', icon: '⚽️' },
+          { name: 'Basketball', icon: '🏀' },
+          { name: 'Golf', icon: '🏌️‍♀️' },
         ],
         [
-          { name: 'Martial Arts', icon: 'fa-solid fa-hand-fist' },
-          { name: 'Hockey', icon: 'fa-solid fa-hockey-puck' },
-          { name: 'Football', icon: 'fa-solid fa-football' },
+          { name: 'Martial Arts', icon: '🥊' },
+          { name: 'Hockey', icon: '🏒' },
+          { name: 'American Football', icon: '🏈' },
         ],
         [
-          { name: 'Baseball', icon: 'fa-solid fa-baseball-bat-ball' },
-          { name: 'Racing', icon: 'fa-solid fa-flag-checkered' },
-          { name: 'Tennis', icon: 'fa-solid fa-table-tennis-paddle-ball' },
+          { name: 'Baseball', icon: '⚾️' },
+          { name: 'Racing', icon: '🏎️' },
+          { name: 'Tennis', icon: '🎾' },
         ],
       ],
     }
   },
+
   actions: {
     async fetchArticles(sports: string[], shown_articles: string[]) {
       this.loading = true
@@ -82,7 +83,8 @@ export const useMainStore = defineStore('store', {
     categoryToIcon(category: string) {
       const categoryToIconMap = Object.fromEntries([
         ['misc', 'fa-solid fa-rectangle-list'],
-        ['fighting', 'fa-solid fa-hand-fist'],
+        ['fighting', '🥊'],
+        ['football', '🏈'],
         ...this.categoryToIconList
           .flat()
           .map(({ name, icon }) => [name.toLowerCase(), icon]),

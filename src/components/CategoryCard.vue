@@ -1,8 +1,10 @@
 <template>
-  <div class="card border-primary" style="width: 18rem; height: 6rem">
+  <div class="card border-primary" style="width: 15rem; height: 7rem">
     <div class="card-body">
       <h5 class="card-title">{{ props.header }}</h5>
-      <font-awesome-icon :icon="props.icon" size="2xl" />
+      <h1>
+        {{ icon }}
+      </h1>
     </div>
   </div>
 </template>
