@@ -1,8 +1,12 @@
 <template>
   <div class="d-flex flex-column min-vh-100" @scroll="handleScroll">
     <h2 class="my-3">Step 2</h2>
-    <p>
+    <p class="p-large">
       <b>{{ info }}</b>
+    </p>
+    <p class="p-placeholder">
+      **The images used are <u>placeholders</u> and therefore not linked to the
+      actual article content, only its category.**
     </p>
     <hr class="my-4" />
     <h4
@@ -98,7 +102,11 @@ export default defineComponent({
   padding: 10px;
 }
 
-p {
+.p-large {
   font-size: large;
+}
+
+.p-placeholder {
+  font-size: medium;
 }
 </style>
