@@ -15,7 +15,6 @@
     <ContentLoader :loading="store.loading">
       <div v-if="!isMobile" class="container">
         <div class="row mt-3">
-          <!-- List 1 and List 2 Columns -->
           <div class="col-sm-7">
             <div
               v-for="(articleRow, rowIndex) in store.recommendations"
@@ -51,7 +50,6 @@
 
       <div v-else>
         <div class="row mt-3">
-          <!-- List 1 and List 2 Columns -->
           <div class="col-sm-8">
             <div
               v-for="(articleRow, rowIndex) in store.recommendations"

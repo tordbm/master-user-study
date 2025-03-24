@@ -28,7 +28,7 @@
         the top of the screen. If the button is disabled, then the progress
         criteria have not been met, i.e. more answers are needed.
       </p>
-      <p>Estimated time of completion: <b>8 minutes</b></p>
+      <p>Estimated time of completion: <b>10 minutes</b></p>
     </div>
   </div>
 </template>

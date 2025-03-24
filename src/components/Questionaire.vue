@@ -1,8 +1,12 @@
 <template>
   <div class="questionaire">
-    <h2 class="text-start">Questionnaire</h2>
+    <div class="d-flex w-100 justify-content-center position-relative">
+      <h2 class="mx-auto">Questionnaire</h2>
+      <div class="position-absolute end-0 mt-2">
+        {{ Object.keys(store.selectedAnswers).length }} / 24 answered
+      </div>
+    </div>
 
-    <!-- Scrollable container for questions -->
     <div class="question-list">
       <div v-for="(item, index) in paginatedQuestions" :key="index">
         <Question
@@ -14,13 +18,13 @@
       </div>
     </div>
 
-    <!-- Pagination controls -->
     <div class="pagination">
       <button @click="prevPage" :disabled="currentPage === 1">Previous</button>
       <span>Page {{ currentPage }} of {{ totalPages }}</span>
       <button @click="nextPage" :disabled="currentPage === totalPages">
         Next
       </button>
+      <div>{{ Object.keys(store.selectedAnswers).length }} / 24 answered</div>
     </div>
   </div>
 </template>
@@ -29,10 +33,18 @@
 import { defineComponent } from 'vue'
 import Question from './Question.vue'
 import { questions } from '../utils/questionaire'
+import { useMainStore } from '../store/mainStore'
 
 export default defineComponent({
   components: {
     Question,
+  },
+  setup() {
+    const store = useMainStore()
+
+    return {
+      store,
+    }
   },
   data() {
     return {
