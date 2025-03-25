@@ -35,7 +35,7 @@
             :abstract="article.abstract" />
         </div>
       </div>
-      <ContentLoader :loading="store.loading" />
+      <ContentLoader :loading="store.loading && store.articles.length < 48" />
     </div>
   </div>
 </template>
