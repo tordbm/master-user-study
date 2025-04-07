@@ -25,7 +25,7 @@
           Copied to clipboard!
         </small>
 
-        <button type="button" class="btn btn-link" @click="redirect">
+        <button type="button" class="btn btn-link" @click="redirect" disabled>
           Redirect back to Prolific
         </button>
       </ContentLoader>
