@@ -8,7 +8,8 @@ export const useMainStore = defineStore('store', {
   state: () => {
     return {
       loading: false,
-      recieptId: null as string | null,
+      prolificId: null as string | null,
+      redirectUrl: null as string | null,
       articles: [] as Article[],
       likedArticles: [] as Article[],
       selectedCategories: [] as number[],

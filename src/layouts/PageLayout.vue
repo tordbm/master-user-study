@@ -132,7 +132,8 @@ export default {
         recommender2: this.store.recommender2,
       }))
       const response = await submitUserStudy(questionaire)
-      this.store.recieptId = response.id
+      this.store.prolificId = response.id
+      this.store.redirectUrl = response.redirect_url
       this.store.loading = false
     },
     next() {
